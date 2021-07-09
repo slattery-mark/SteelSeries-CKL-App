@@ -1,6 +1,6 @@
 # Custom Lighting App
 
-This app allows for custom RGB lighting for SteelSeries keyboards via the [GameSense SDK](https://github.com/SteelSeries/gamesense-sdk). Run `gui.pyw` to begin sending lighting effects to the keyboard using the gui. The app will appear as **Custom Keyboard Lighting** in Engine's 'Apps' menu, though there is not much you can do there. To remove the app from Engine, navigate to the *Registration* page of the gui and click the *Deregister* button.
+This app provides a means for custom RGB lighting for SteelSeries keyboards via the [GameSense SDK](https://github.com/SteelSeries/gamesense-sdk). Run `gui.pyw` to begin sending lighting effects to the keyboard using a gui. The app will appear as **Custom Keyboard Lighting** in Engine's 'Apps' menu, though there is not much you can do there. To remove the app from Engine, navigate to the *Registration* page of the gui and click the *Deregister* button.
 
 ## Table of Contents
 1. [Requirements/Installation](#requirementsinstallation)
@@ -11,9 +11,9 @@ This app allows for custom RGB lighting for SteelSeries keyboards via the [GameS
 
 ## Requirements/Installation
 
-1. SteelSeries Engine - required to communicate with the GameSense API
+1. [SteelSeries Engine](https://steelseries.com/engine) - required to communicate with the GameSense API
 2. Ensure that the file `coreProps.json` is located at `%PROGRAMDATA%\SteelSeries\SteelSeries Engine 3\`
-3. Python (developed in Python 3.9.6)
+3. [Python](https://www.python.org/) (developed in [Python 3.9.6](https://www.python.org/downloads/release/python-396/)
 
 Once Python is installed, use the package manager **pip** to install the following packages. Enter the following lines in your terminal.
 
