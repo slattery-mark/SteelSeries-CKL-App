@@ -2,6 +2,8 @@
 
 This app provides a means for custom RGB lighting for SteelSeries keyboards via the [GameSense SDK](https://github.com/SteelSeries/gamesense-sdk). Run `gui.pyw` to begin sending lighting effects to the keyboard using a gui. The app will appear as **Custom Keyboard Lighting** in Engine's 'Apps' menu, though there is not much you can do there. To remove the app from Engine, navigate to the *Registration* page of the gui and click the *Deregister* button.
 
+**NOTE:** The custom keyboard effects will timeout after not receiving any events for 15 seconds. So, after stopping or exiting the gui, the keyboard will return to its profile after 15 seconds.
+
 ## Table of Contents
 1. [Requirements/Installation](#requirementsinstallation)
 2. [How-to](#how-to)
