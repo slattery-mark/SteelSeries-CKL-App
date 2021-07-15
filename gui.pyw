@@ -1,7 +1,7 @@
 from tkinter import Tk, ttk, Frame
 from threading import Event, Thread
 
-from engine_app import Engine_App
+from engine_app import CKL
 
 class tkinterApp(Tk):
     def __init__(self):
@@ -10,7 +10,7 @@ class tkinterApp(Tk):
         self.title('CKL')
         self.resizable(0,0)
 
-        self.engine = Engine_App()
+        self.ckl = CKL()
         self.kill_switch = Event()
         self.threads = []
         self.frames = {} 
@@ -30,7 +30,7 @@ class tkinterApp(Tk):
         frame.tkraise()
     
     def start(self):
-        thread = Thread(target=self.engine.sendGameEvent, args=(0, self.kill_switch))
+        thread = Thread(target=self.ckl.sendGameEvent, args=(0, self.kill_switch))
         self.threads.append(thread)
         thread.start()
 
@@ -42,12 +42,12 @@ class tkinterApp(Tk):
         self.kill_switch.clear()
 
     def registerGame(self):
-        self.engine.registerGame()
-        self.engine.bindGameEvent()
+        self.ckl.registerGame()
+        self.ckl.bindGameEvent()
 
     def removeGame(self):
-        self.engine.removeGameEvent()
-        self.engine.removeGame()
+        self.ckl.removeGameEvent()
+        self.ckl.removeGame()
 
 class Page1(Frame):
     def __init__(self, parent, controller):

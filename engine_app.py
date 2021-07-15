@@ -4,7 +4,7 @@ from time import sleep
 from requests import Session, post
 from random import choice
 
-class Engine_App:
+class CKL:
     def __init__(self):
         corePropsPath = getenv('PROGRAMDATA') + "\SteelSeries\SteelSeries Engine 3\coreProps.json" 
         self.sseAddress = f'http://{load(open(corePropsPath))["address"]}'
