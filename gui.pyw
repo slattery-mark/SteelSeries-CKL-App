@@ -2,6 +2,7 @@ from tkinter import Tk, ttk, Frame
 from threading import Event, Thread
 
 from engine_app import Engine_App
+
 class tkinterApp(Tk):
     def __init__(self):
         super().__init__()
