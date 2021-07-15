@@ -35,12 +35,12 @@ All other packages used are included in the Python STL
 
 ### The GUI
 
-![screenshot_startstop](screenshot_startstop.jpg)
+![screenshot_startstop](images/screenshot_startstop.jpg)
 - **Start/Stop**
     * **Start**: Loop game events to the keyboard
     * **Stop**: Stop looping game events to the keyboard
 
-![screenshot_startstop](screenshot_registration.jpg)
+![screenshot_startstop](images/screenshot_registration.jpg)
 - **Registration**
     * **Register**: Register the application to SteelSeries Engine Apps (this action is performed automatically each launch)
     * **Deregeister**: Remove the application from SteelSeries Engine Apps
