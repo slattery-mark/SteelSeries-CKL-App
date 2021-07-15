@@ -6,7 +6,7 @@ class tkinterApp(Tk):
     def __init__(self):
         super().__init__()
         
-        self.title('Engine App')
+        self.title('CKL')
         self.resizable(0,0)
 
         self.engine = Engine_App()
@@ -17,13 +17,10 @@ class tkinterApp(Tk):
         container = Frame(self)
         container.pack(padx=12, pady=12)
 
-        label = ttk.Label(container, text=self.engine.getGameDisplayName(), font='bold')
-        label.grid(row=0, column=0, columnspan=2, pady=(0,10))
-
         for i in (Page1, Page2):
             frame = i(container, self)
             self.frames[i] = frame
-            frame.grid(row = 1, column = 0, sticky ="nsew")
+            frame.grid(row=1, column=0, sticky="nsew")
   
         self.show_frame(Page1)
   
@@ -56,11 +53,13 @@ class Page1(Frame):
         Frame.__init__(self, parent)
 
         # duplicate widgets
-        btnStartStop = ttk.Button(self, text='App', width=15, state='disabled', command=lambda:controller.show_frame(Page1))
+        btnStartStop = ttk.Button(self, text='Start/Stop', width=15, state='disabled', command=lambda:controller.show_frame(Page1))
         btnRegistration = ttk.Button(self, text ='Registration', width=15, command=lambda:controller.show_frame(Page2))
+        label = ttk.Label(self, text='Start/Stop', font='bold')
 
-        btnStartStop.grid(row=1, column=0, ipady=3)
-        btnRegistration.grid(row=1, column=1, ipady=3)
+        btnStartStop.grid(row=1, column=0, ipady=3, pady=(0,7))
+        btnRegistration.grid(row=1, column=1, ipady=3, pady=(0,7))
+        label.grid(row=0, column=0, columnspan=2, pady=(0,10))
 
         # page specific
         btnStart = ttk.Button(self, text='Start', width=32, command=lambda:[btnStart.state(['disabled']), btnStop.state(['!disabled']), controller.start()])
@@ -74,11 +73,13 @@ class Page2(Frame):
         Frame.__init__(self, parent)
 
         # duplicate widgets
-        btnStartStop = ttk.Button(self, text ='App', width='15', command=lambda:controller.show_frame(Page1))
+        btnStartStop = ttk.Button(self, text ='Start/Stop', width='15', command=lambda:controller.show_frame(Page1))
         btnRegistration = ttk.Button(self, text ='Registration', width='15', state='disabled', command=lambda:controller.show_frame(Page2))
+        label = ttk.Label(self, text='Registration', font='bold')
 
-        btnStartStop.grid(row=0, column=0, ipady=3)
-        btnRegistration.grid(row=0, column=1, ipady=3)
+        btnStartStop.grid(row=1, column=0, ipady=3, pady=(0,7))
+        btnRegistration.grid(row=1, column=1, ipady=3, pady=(0,7))
+        label.grid(row=0, column=0, columnspan=2, pady=(0,10))
 
         # page specific
         btnRegister = ttk.Button(self, text='Register', width=32, state='disabled', command=lambda:[btnRegister.state(['disabled']), btnDeregister.state(['!disabled']), controller.registerGame()])

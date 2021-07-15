@@ -45,7 +45,7 @@ class Engine_App:
                 }
             ]
         }
-        self.postSinglePayload(endpoint, payload)
+        post(endpoint, json=payload)
 
     def registerGame(self):    
         endpoint = f'{self.sseAddress}/game_metadata'
@@ -54,14 +54,14 @@ class Engine_App:
             "game_display_name" : self.game_display_name,
             "developer" : "yrfriendmark"
         }
-        self.postSinglePayload(endpoint, payload)
+        post(endpoint, json=payload)
 
     def removeGame(self):
         endpoint = f'{self.sseAddress}/remove_game'
         payload = {
             "game": self.game
         }
-        self.postSinglePayload(endpoint, payload)
+        post(endpoint, json=payload)
 
     def removeGameEvent(self):
         endpoint = f'{self.sseAddress}/remove_game_event'
@@ -69,14 +69,14 @@ class Engine_App:
             "game": self.game,
             "event" : self.event
         }
-        self.postSinglePayload(endpoint, payload)
+        post(endpoint, json=payload)
 
     def sendHeartbeat(self):
         endpoint = f'{self.sseAddress}/game_heartbeat'
         payload = {
                 "game": self.game
         }
-        self.postSinglePayload(endpoint, payload)
+        post(endpoint, json=payload)
 
     def sendGameEvent(self, args, kill_switch):
         endpoint = f'{self.sseAddress}/game_event'
@@ -91,8 +91,6 @@ class Engine_App:
                 }
             }
         }
-
-        # lighting algorithm starts
         rows = [
             [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21],
             [22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43],
@@ -142,10 +140,3 @@ class Engine_App:
                         s.post(endpoint, json=payload)
                         if kill_switch.is_set(): break
                         sleep(0.01)
-
-    def postSinglePayload(self, endpoint, payload):
-        res = post(endpoint, json=payload)
-        if res.ok:
-            pass
-        else:
-            pass
