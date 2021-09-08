@@ -25,29 +25,34 @@ class tkinterApp(Tk):
   
         self.show_frame(Page1)
   
+    def registerGame(self):
+        """Calls the CKL method to register this application to Engine."""
+        self.ckl.registerGame()
+        self.ckl.bindGameEvent()
+
+    def removeGame(self):
+        """Calls the CKL method to remove this application from Engine."""
+        self.ckl.removeGameEvent()
+        self.ckl.removeGame()
+
     def show_frame(self, page):
+        """Moves a frame of the GUI to the top for display."""
         frame = self.frames[page]
         frame.tkraise()
     
     def start(self):
+        """Spins a thread to send lighting events."""
         thread = Thread(target=self.ckl.sendGameEvent, args=(0, self.kill_switch))
         self.threads.append(thread)
         thread.start()
 
     def stop(self):
+        """Kills any active threads."""
         self.kill_switch.set()
         for thread in self.threads:
             thread.join()
             self.threads.remove(thread)
         self.kill_switch.clear()
-
-    def registerGame(self):
-        self.ckl.registerGame()
-        self.ckl.bindGameEvent()
-
-    def removeGame(self):
-        self.ckl.removeGameEvent()
-        self.ckl.removeGame()
 
 class Page1(Frame):
     def __init__(self, parent, controller):
