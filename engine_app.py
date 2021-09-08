@@ -28,10 +28,8 @@ class CKL:
         self.registerGame()
         self.bindGameEvent()
 
-    def getGameDisplayName(self):
-        return self.game_display_name
-
     def bindGameEvent(self):
+        """Binds a lighting event to Engine."""
         endpoint = f'{self.sseAddress}/bind_game_event'
         payload = {
             "game": self.game,
@@ -45,9 +43,14 @@ class CKL:
                 }
             ]
         }
-        post(endpoint, json=payload)
+        post(endpoint, json=payload)        
+        
+    def getGameDisplayName(self):
+        """Returns the name displayed in SteelSeries Engine for this application."""
+        return self.game_display_name
 
-    def registerGame(self):    
+    def registerGame(self):
+        """Registers this application to Engine."""
         endpoint = f'{self.sseAddress}/game_metadata'
         payload = {
             "game" : self.game,
@@ -57,6 +60,7 @@ class CKL:
         post(endpoint, json=payload)
 
     def removeGame(self):
+        """Removes this application from Engine."""
         endpoint = f'{self.sseAddress}/remove_game'
         payload = {
             "game": self.game
@@ -64,6 +68,7 @@ class CKL:
         post(endpoint, json=payload)
 
     def removeGameEvent(self):
+        """Removes a lighting event from Engine."""
         endpoint = f'{self.sseAddress}/remove_game_event'
         payload = {
             "game": self.game,
@@ -72,6 +77,7 @@ class CKL:
         post(endpoint, json=payload)
 
     def sendHeartbeat(self):
+        """Sends an empty lighting event to Engine to prevent timeout."""
         endpoint = f'{self.sseAddress}/game_heartbeat'
         payload = {
                 "game": self.game
@@ -79,6 +85,7 @@ class CKL:
         post(endpoint, json=payload)
 
     def sendGameEvent(self, args, kill_switch):
+        """Sends a lighting event/frame to Engine."""
         endpoint = f'{self.sseAddress}/game_event'
         frame = self.bitmap
         payload = {
